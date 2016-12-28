@@ -3,6 +3,30 @@
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) exit;
 
+// avoid broken avatar icons if anon comments are allowed
+function pp_pre_get_avatar( $avatar, $id_or_email, $args ) {
+
+	if ( isset( $id_or_email->user_id ) ) {
+	
+		if ( $id_or_email->user_id === '0' ) {
+		
+			$default = get_option('avatar_default');
+
+			if( $default == 'identicon_local' )	{
+			
+				$mystery_man = '<img src="' . site_url() . '/wp-content/plugins/buddypress/bp-core/images/mystery-man.jpg" class="avatar user-28-avatar avatar-74 photo" width="74" height="74">';
+				
+				$avatar = apply_filters( 'pp_local_avatars_anon', $mystery_man );
+				
+			}
+		}
+	}
+	
+	return $avatar;
+}
+add_filter( 'pre_get_avatar', 'pp_pre_get_avatar', 15, 3 );
+
+
 
 // settings in wp-admin
 function pp_lc_add_settings() {
@@ -36,8 +60,11 @@ function pp_lc_add_avatar_default_option( $avatar_defaults ) {
 // add an icon to the option in Settings > Discussion > Avatars
 function pp_lc_add_avatar_default_option_img( $avatar_list ) {
 
-	$str_array = array( 'http://0.gravatar.com/avatar/ffd294ab5833ba14aaf175f9acc71cc4?s=64&amp;d=identicon_local&amp;r=g&amp;forcedefault=1 2x', 'http://0.gravatar.com/avatar/ffd294ab5833ba14aaf175f9acc71cc4?s=32&amp;d=identicon_local&amp;r=g&amp;forcedefault=1', 'http://1.gravatar.com/avatar/1ea18284b39b7e184779ea1ddc5f4ee2?s=64&amp;d=identicon_local&amp;r=g&amp;forcedefault=1 2x',  'http://1.gravatar.com/avatar/1ea18284b39b7e184779ea1ddc5f4ee2?s=32&amp;d=identicon_local&amp;r=G&amp;forcedefault=1' );
-
+	$str_array = array( 'http://0.gravatar.com/avatar/ffd294ab5833ba14aaf175f9acc71cc4?s=64&amp;d=identicon_local&amp;r=g&amp;forcedefault=1 2x', 'http://0.gravatar.com/avatar/ffd294ab5833ba14aaf175f9acc71cc4?s=32&amp;d=identicon_local&amp;r=g&amp;forcedefault=1', 'http://1.gravatar.com/avatar/1ea18284b39b7e184779ea1ddc5f4ee2?s=64&amp;d=identicon_local&amp;r=g&amp;forcedefault=1 2x',  'http://1.gravatar.com/avatar/1ea18284b39b7e184779ea1ddc5f4ee2?s=32&amp;d=identicon_local&amp;r=G&amp;forcedefault=1', 
+	'http://1.gravatar.com/avatar/1ea18284b39b7e184779ea1ddc5f4ee2?s=32&#038;d=identicon_local&#038;f=y&#038;r=g',
+	'http://1.gravatar.com/avatar/1ea18284b39b7e184779ea1ddc5f4ee2?s=64&amp;d=identicon_local&amp;f=y&amp;r=g 2x'
+	);
+	
 	$icon = plugins_url( 'icon.png', __FILE__ );
 
 	$avatar_list = str_ireplace($str_array, $icon, $avatar_list);
@@ -143,7 +170,7 @@ class PP_Local_Avatars {
 		add_action( 'wp_login', array( $this, 'login' ), 10, 2 );
 
 		add_action( 'user_register', array( $this, 'register' ) );
-
+		
 		add_filter( 'bp_core_fetch_avatar_no_grav', array( $this, 'no_grav' ) );
 
 	}
@@ -226,8 +253,9 @@ class PP_Local_Avatars {
 
 	    $url = 'http://www.gravatar.com/avatar/';
 	    $url .= md5( strtolower( trim( $email ) ) );
-	    $url .= ".jpg?s=$s&d=$d&r=$r";
-
+	    //$url .= ".jpg?s=$s&d=$d&r=$r";  // old structure
+	    $url .= ".?s=$s&d=$d&r=$r";
+	    
 		return $url;
 
 	}

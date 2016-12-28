@@ -1,11 +1,12 @@
 <?php
 /*
-Plugin Name: BP Local Avatars
-Description: Requires BuddyPress. Adds an option to create Identicon Avatars and store them locally.
-Version: 1.9
-Author: PhiloPress
-Author URI: http://philopress.com/
-*/
+ * Plugin Name: BP Local Avatars
+ * Description: Requires BuddyPress. Adds an option to create Identicon Avatars and store them locally.
+ * Version: 2.2
+ * Author: PhiloPress, shanebp
+ * Author URI: http://philopress.com/
+ * License: GPLv2 or later
+ */
 
 // Exit if accessed directly
 if ( !defined( 'ABSPATH' ) ) exit;
@@ -19,7 +20,7 @@ add_action('plugins_loaded', 'pp_local_avatars_bp_check', 999);
 
 function pp_local_avatars_install_buddypress_notice() {
 	echo '<div id="message" class="error fade"><p style="line-height: 150%">';
-	_e('<strong>BP Local Avatars</strong></a> requires the BuddyPress plugin. Please <a href="http://buddypress.org/download">install BuddyPress</a> first, or <a href="plugins.php">deactivate BP Local Avatars</a>.');
+	_e('BP Local Avatars requires the BuddyPress plugin. Please install BuddyPress or deactivate BP Local Avatars.');
 	echo '</p></div>';
 }
 
