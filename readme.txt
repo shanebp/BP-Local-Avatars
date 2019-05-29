@@ -1,11 +1,11 @@
 === BP Local Avatars ===
 Contributors: shanebp
-Donate link: http://www.philopress.com/donate/
+Donate link: https://www.philopress.com/donate/
 Tags: BuddyPress, members, groups, avatars, gravatars
-Author URI: http://philopress.com/contact/
-Plugin URI: http://philopress.com/products/
+Author URI: https://philopress.com
+Plugin URI: https://philopress.com
 Requires at least: 4.0
-Tested up to: 4.7
+Tested up to: 5.0 
 Stable tag: 2.2
 License: GPLv2 or later
 
@@ -37,7 +37,7 @@ Settings -> Discussion > Default Avatar > BuddyPress Identicon (Generated and St
 3. After saving, you will see a link to 'Bulk Generate' avatars for all users and groups who do not have a local avatar. If a user already has their own Gravatar, it will save it locally.
 
 
-For more BuddyPress plugins, please visit http://www.philopress.com/
+For more BuddyPress plugins, please visit [PhiloPress](https://www.philopress.com/)
 
 
 == Installation ==

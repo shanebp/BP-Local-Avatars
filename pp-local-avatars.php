@@ -60,9 +60,9 @@ function pp_lc_add_avatar_default_option( $avatar_defaults ) {
 // add an icon to the option in Settings > Discussion > Avatars
 function pp_lc_add_avatar_default_option_img( $avatar_list ) {
 
-	$str_array = array( 'http://0.gravatar.com/avatar/ffd294ab5833ba14aaf175f9acc71cc4?s=64&amp;d=identicon_local&amp;r=g&amp;forcedefault=1 2x', 'http://0.gravatar.com/avatar/ffd294ab5833ba14aaf175f9acc71cc4?s=32&amp;d=identicon_local&amp;r=g&amp;forcedefault=1', 'http://1.gravatar.com/avatar/1ea18284b39b7e184779ea1ddc5f4ee2?s=64&amp;d=identicon_local&amp;r=g&amp;forcedefault=1 2x',  'http://1.gravatar.com/avatar/1ea18284b39b7e184779ea1ddc5f4ee2?s=32&amp;d=identicon_local&amp;r=G&amp;forcedefault=1', 
-	'http://1.gravatar.com/avatar/1ea18284b39b7e184779ea1ddc5f4ee2?s=32&#038;d=identicon_local&#038;f=y&#038;r=g',
-	'http://1.gravatar.com/avatar/1ea18284b39b7e184779ea1ddc5f4ee2?s=64&amp;d=identicon_local&amp;f=y&amp;r=g 2x'
+	$str_array = array( 'http://0.gravatar.com/avatar/ffd294ab5833ba14aaf175f9acc71cc4?s=64&amp;d=identicon_local&amp;r=g&amp;forcedefault=1 2x', 'https://0.gravatar.com/avatar/ffd294ab5833ba14aaf175f9acc71cc4?s=32&amp;d=identicon_local&amp;r=g&amp;forcedefault=1', 'https://1.gravatar.com/avatar/1ea18284b39b7e184779ea1ddc5f4ee2?s=64&amp;d=identicon_local&amp;r=g&amp;forcedefault=1 2x',  'https://1.gravatar.com/avatar/1ea18284b39b7e184779ea1ddc5f4ee2?s=32&amp;d=identicon_local&amp;r=G&amp;forcedefault=1', 
+	'https://1.gravatar.com/avatar/1ea18284b39b7e184779ea1ddc5f4ee2?s=32&#038;d=identicon_local&#038;f=y&#038;r=g',
+	'https://1.gravatar.com/avatar/1ea18284b39b7e184779ea1ddc5f4ee2?s=64&amp;d=identicon_local&amp;f=y&amp;r=g 2x'
 	);
 	
 	$icon = plugins_url( 'icon.png', __FILE__ );
@@ -251,7 +251,7 @@ class PP_Local_Avatars {
 
 	private function gravatar_url( $email, $s = 50, $d = 'identicon', $r = 'g' ) {
 
-	    $url = 'http://www.gravatar.com/avatar/';
+	    $url = 'https://www.gravatar.com/avatar/';
 	    $url .= md5( strtolower( trim( $email ) ) );
 	    //$url .= ".jpg?s=$s&d=$d&r=$r";  // old structure
 	    $url .= ".?s=$s&d=$d&r=$r";
