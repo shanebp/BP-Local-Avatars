@@ -2,11 +2,11 @@
 Contributors: shanebp
 Donate link: https://www.philopress.com/donate/
 Tags: BuddyPress, members, groups, avatars, gravatars
-Author URI: https://philopress.com
-Plugin URI: https://philopress.com
+Author URI: https://philopress.com/
+Plugin URI: https://philopress.com/
 Requires at least: 4.0
-Tested up to: 5.0 
-Stable tag: 2.2
+Tested up to: 5.4
+Stable tag: 3.0
 License: GPLv2 or later
 
 A BuddyPress plugin that creates Gravatar avatars for any user or group without one, and stores them locally.
@@ -30,7 +30,7 @@ Or maybe you do not want each page view to include a lot of calls to gravatar.co
 Usage:
 
 1. Provides an option in wp-admin under:
-Settings -> Discussion > Default Avatar > BuddyPress Identicon (Generated and Stored Locally). 
+Settings -> Discussion > Default Avatar > BuddyPress Identicon (Generated and Stored Locally).
 
 2. Select and Save. Otherwise this plugin will not do anything.
 
@@ -54,9 +54,9 @@ For more BuddyPress plugins, please visit [PhiloPress](https://www.philopress.co
 = Does it support Monsterid and Wavatar? =
  Yes, but it defaults to Identicon.
  You can change the type of avatar created by adjusting the calls in 'public function create()'
- 
+
 = Are there any server requirements? =
- Just this: requires that 'allow_url_fopen' is set to true.  Which is the default setting on most servers. 
+ Just this: requires that 'allow_url_fopen' is set to true.  Which is the default setting on most servers.
 
 
 == Screenshots ==
@@ -64,6 +64,10 @@ For more BuddyPress plugins, please visit [PhiloPress](https://www.philopress.co
 
 
 == Changelog ==
+
+= 3.0 =
+Tested with WP 5.4
+Now generates avatars if a dir exists but is empty
 
 = 2.2 =
 Bug that caused broken avatars on comments by anonymous users - Fixed
@@ -106,6 +110,10 @@ Tested with WP 4.1.1
 
 == Upgrade Notice ==
 
+= 3.0 =
+Tested with WP 5.4
+Now generates avatars if a dir exists but is empty
+
 = 2.2 =
 Bug that caused broken avatars on comments by anonymous users - Fixed
 
@@ -113,7 +121,7 @@ Bug that caused broken avatars on comments by anonymous users - Fixed
 Tested with WP 4.7 and BP 2.7.2
 
 = 2.0 =
-Updated call to gravatar.com to conform with new request format. You may need to deactivate & reactivate this plugin after updating. 
+Updated call to gravatar.com to conform with new request format. You may need to deactivate & reactivate this plugin after updating.
 
 = 1.9 =
 Tested in WP 4.3

@@ -2,9 +2,9 @@
 /*
  * Plugin Name: BP Local Avatars
  * Description: Requires BuddyPress. Adds an option to create Identicon Avatars and store them locally.
- * Version: 2.2 
- * Author: PhiloPress
- * Author URI: https://www.philopress.com/
+ * Version: 3.0
+ * Author: shanebp
+ * Author URI: https://philopress.com/
  * License: GPLv2 or later
  */
 
@@ -26,6 +26,7 @@ function pp_local_avatars_install_buddypress_notice() {
 
 
 function pp_local_avatars_init() {
+	require( dirname( __FILE__ ) . '/class-pp-local-avatars.php' );
     require( dirname( __FILE__ ) . '/pp-local-avatars.php' );
 }
 add_action( 'bp_include', 'pp_local_avatars_init' );
@@ -33,10 +34,10 @@ add_action( 'bp_include', 'pp_local_avatars_init' );
 
 // if Default Avatar was set to BuddyPress Identicon, reset default avatar to Mystery to prevent broken avatar icons
 function pp_local_avatars_deactivation () {
-	
+
 	$default_avatar = get_option('avatar_default');
 
-	if( $default_avatar == 'identicon_local' )
+	if ( $default_avatar == 'identicon_local' )
 		update_option( 'avatar_default', 'mystery' );
 
 }
